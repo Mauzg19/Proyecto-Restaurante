@@ -1,40 +1,39 @@
-## How to run backend?
+## ¿Cómo ejecutar el backend?
 
-- ### Install Java-17 and JavaC
+- ### Instalar Java-17 y JavaC
 
-- ### Setting up MySQL
-	- Download MySQL
+- ### Configuración de MySQL
+	- Descargar MySQL
         ```
         sudo dnf install community-mysql-server -y
         ```
-	- Enable and start `mysqld`
+	- Habilitar e iniciar `mysqld`
         ```
         sudo systemctl enable --now mysqld
         ```
-	- Install MySQL
+	- Instalar MySQL
         ```
         sudo mysql_secure_installation
         ```
 
-- ### Edit **`src/resources/application.properties`**
-  - Edit MySql Database configuration
+-### Editar **`src/resources/application.properties`**
+  - Editar la configuración de la base de datos MySQL
     ```
     mysql -u root -p
     ```
     ```
-    create database YOUR_DATABASE_NAME;
+    create database SU_NOMBRE_DE_BASE_DE_DATOS;
     ```
     ```
-    use YOUR_DATABASE_NAME;
+    use SU_NOMBRE_DE_BASE_DE_DATOS
     ```
     ```
     show tables;
     ```
-  - Paste your stripe payment gateway secret key
-  - Paste your email and app password
-	> [How to generate app password for email?](https://www.youtube.com/watch?v=T0Op3Qzz6Ms)
+  - Pegue la clave secreta de su pasarela de pago de Stripe
+  - Pegue su correo electrónico y contraseña de la aplicación
 
-- ### Start backend server locally
+- ### Iniciar el servidor backend localmente
 	```
 	export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 	```
@@ -42,9 +41,9 @@
 	path/to/mvn spring-boot:run
 	```
 
-## How to run frontend?
+## ¿Cómo ejecutar el frontend?
 ```
-npm i
+npm install
 ```
 ```
 npm start
