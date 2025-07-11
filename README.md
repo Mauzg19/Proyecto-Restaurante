@@ -16,7 +16,7 @@
         sudo mysql_secure_installation
         ```
 
--### Editar **`src/resources/application.properties`**
+- ### Editar **`src/resources/application.properties`**
   - Editar la configuración de la base de datos MySQL
     ```
     mysql -u root -p
