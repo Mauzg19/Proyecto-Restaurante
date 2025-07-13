@@ -43,6 +43,14 @@ public class MenuItemController {
 		return ResponseEntity.ok(menuItems);
 	}
 	
-
+	@GetMapping("/calculate/{menuId}")
+	public ResponseEntity<Integer> calculateMenuQuantity(@PathVariable Long menuId) throws FoodException {
+	    Food menu = menuItemService.findFoodById(menuId);
+	    int minQuantity = menu.getIngredients().stream()
+	        .mapToInt(ingredient -> ingredient.getStock())
+	        .min()
+	        .orElse(0);
+	    return ResponseEntity.ok(minQuantity);
+	}
 
 }

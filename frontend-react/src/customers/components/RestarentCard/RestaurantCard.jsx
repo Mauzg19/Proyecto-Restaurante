@@ -37,7 +37,7 @@ const RestaurantCard = ({ data, index }) => {
           // variant="outlined"
           className="absolute top-2 left-2"
           color={data.open?"success":"error"}
-          label={data.open ? "Open" : "Closed"}
+          label={data.open ? "Abierto" : "Cerrado"}
         />
       </div>
       <div className="p-4 textPart lg:flex w-full justify-between">

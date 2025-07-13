@@ -21,32 +21,32 @@ public class PaymentServiceImplementation implements PaymentService{
 
 	  Stripe.apiKey = stripeSecretKey;
 
-	        SessionCreateParams params = SessionCreateParams.builder()
-	                .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
-	                .setMode(SessionCreateParams.Mode.PAYMENT)
-	                .setSuccessUrl("https://zosh-food.vercel.app/payment/success/"+order.getId())
-	                .setCancelUrl("https://zosh-food.vercel.app/cancel")
-	                .addLineItem(SessionCreateParams.LineItem.builder()
-	                        .setQuantity(1L)
-	                        .setPriceData(SessionCreateParams.LineItem.PriceData.builder()
-	                                .setCurrency("usd")
-	                                .setUnitAmount((long) order.getTotalAmount()*100) // Specify the order amount in cents
-	                                .setProductData(SessionCreateParams.LineItem.PriceData.ProductData.builder()
-	                                        .setName("pizza burger")
-	                                        .build())
-	                                .build())
-	                        .build())
-	                .build();
-	        
-	        Session session = Session.create(params);
-	        
-	        System.out.println("session _____ " + session);
-	        
-	        PaymentResponse res = new PaymentResponse();
-	        res.setPayment_url(session.getUrl());
-	        
-	        return res;
-	    
+			SessionCreateParams params = SessionCreateParams.builder()
+					.addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
+					.setMode(SessionCreateParams.Mode.PAYMENT)
+				.setSuccessUrl("https://proyecto-restaurante-six.vercel.app/"+order.getId())
+				.setCancelUrl("https://proyecto-restaurante-six.vercel.app/")
+					.addLineItem(SessionCreateParams.LineItem.builder()
+							.setQuantity(1L)
+							.setPriceData(SessionCreateParams.LineItem.PriceData.builder()
+									.setCurrency("usd")
+									.setUnitAmount((long) order.getTotalAmount()*100) // Specify the order amount in cents
+									.setProductData(SessionCreateParams.LineItem.PriceData.ProductData.builder()
+											.setName("pizza burger")
+											.build())
+									.build())
+							.build())
+					.build();
+			
+			Session session = Session.create(params);
+			
+			System.out.println("session _____ " + session);
+			
+			PaymentResponse res = new PaymentResponse();
+			res.setPayment_url(session.getUrl());
+			
+			return res;
+		
 	}
 
 }

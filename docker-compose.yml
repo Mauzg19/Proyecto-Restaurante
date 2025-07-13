@@ -6,7 +6,7 @@ services:
     image: mysql:8.0
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: Mauricio19
+      MYSQL_ROOT_PASSWORD: Breiner0711
       MYSQL_DATABASE: restaurante_ing
     ports:
       - "3307:3306"
@@ -15,7 +15,7 @@ services:
 
   backend:
     build:
-      context: C:\Users\LENOVO\Videos\Restaurante 
+      context: C:\Proyecto Restaurante\backend-spring-boot
       dockerfile: Dockerfile  
     image: infraestructura-backend:latest
     ports:
@@ -25,13 +25,13 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/restaurante_ing
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: Mauricio19
+      SPRING_DATASOURCE_PASSWORD: Breiner0711
     networks:
       - restaurante-network
 
   frontend:
     build:
-      context: C:\Users\LENOVO\Videos\react\my-project
+      context: C:\Proyecto Restaurante\frontend-react
       dockerfile: Dockerfile  
     image: infraestructura-frontend:latest
     ports:

@@ -47,7 +47,7 @@ const handleUpdateRestaurantStatus=()=>{
           </IconButton>
         }
         title={item.name}
-        subheader="September 14, 2016"
+        subheader="14 de septiembre de 2016"
       />
       {/* <CardMedia
         component="img"

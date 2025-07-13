@@ -36,22 +36,22 @@ const MenuProps = {
 };
 
 const validationSchema = Yup.object({
-  name: Yup.string().required("Name is required"),
-  description: Yup.string().required("Description is required"),
+  name: Yup.string().required("El nombre es obligatorio"),
+  description: Yup.string().required("La descripción es obligatoria"),
   price: Yup.number()
-    .typeError("Price must be a number")
-    .required("Price is required")
-    .min(0, "Price must be greater than or equal to 0"),
+    .typeError("El precio debe ser un número")
+    .required("El precio es obligatorio")
+    .min(0, "El precio debe ser mayor o igual a 0"),
 
   imageUrl: Yup.string()
-    .url("Invalid URL format")
-    .required("Image URL is required"),
-  vegetarian: Yup.boolean().required("Is Vegetarian is required"),
-  seasonal: Yup.boolean().required("Is Gluten Free is required"),
+    .url("Formato de URL inválido")
+    .required("La URL de la imagen es obligatoria"),
+  vegetarian: Yup.boolean().required("Indique si es vegetariano"),
+  seasonal: Yup.boolean().required("Indique si es de temporada"),
   quantity: Yup.number()
-    .typeError("Quantity must be a number")
-    .required("Quantity is required")
-    .min(0, "Quantity must be greater than or equal to 0"),
+    .typeError("La cantidad debe ser un número")
+    .required("La cantidad es obligatoria")
+    .min(0, "La cantidad debe ser mayor o igual a 0"),
 });
 const initialValues = {
   name: "",
@@ -113,7 +113,7 @@ const AddMenuForm = () => {
       <div className="lg:px-32 px-5 lg:flex  justify-center min-h-screen items-center pb-5">
         <div>
           <h1 className="font-bold text-2xl text-center py-2">
-            Add New Menu Item
+            Agregar nuevo platillo al menú
           </h1>
           <form onSubmit={formik.handleSubmit} className="space-y-4 ">
             <Grid container spacing={2}>
@@ -167,7 +167,7 @@ const AddMenuForm = () => {
                   fullWidth
                   id="name"
                   name="name"
-                  label="Name"
+                  label="Nombre"
                   variant="outlined"
                   onChange={formik.handleChange}
                   value={formik.values.name}
@@ -180,7 +180,7 @@ const AddMenuForm = () => {
                   fullWidth
                   id="description"
                   name="description"
-                  label="Description"
+                  label="Descripción"
                   variant="outlined"
                   onChange={formik.handleChange}
                   value={formik.values.description}
@@ -198,7 +198,7 @@ const AddMenuForm = () => {
                   fullWidth
                   id="price"
                   name="price"
-                  label="Price"
+                  label="Precio"
                   variant="outlined"
                   type="number"
                   onChange={formik.handleChange}
@@ -208,17 +208,18 @@ const AddMenuForm = () => {
                 />
               </Grid>
               <Grid item xs={6}>
-                <FormControl fullWidth variant="outlined">
-                  <InputLabel htmlFor="categoryId">Food Category</InputLabel>
+                <FormControl fullWidth>
+                  <InputLabel htmlFor="category">Categoría de comida</InputLabel>
                   <Select
                     id="category"
                     name="category"
-                    label="Food Category"
-                    onChange={formik.handleChange}
                     value={formik.values.category}
+                    onChange={formik.handleChange}
                   >
-                    {restaurant.categories.map((item) => (
-                      <MenuItem value={item}>{item.name}</MenuItem>
+                    {restaurant.categories.map((category) => (
+                      <MenuItem key={category.id} value={category}>
+                        {category.name}
+                      </MenuItem>
                     ))}
                   </Select>
                 </FormControl>
@@ -227,7 +228,7 @@ const AddMenuForm = () => {
               <Grid item xs={12}>
                 <FormControl fullWidth>
                   <InputLabel id="ingredient-multiple-chip-label">
-                    Ingredients
+                    Ingredientes
                   </InputLabel>
                   <Select
                     labelId="ingredient-multiple-chip-label"
@@ -264,9 +265,28 @@ const AddMenuForm = () => {
                 </FormControl>
               </Grid>
 
+              <Grid item xs={12}>
+                <FormControl fullWidth>
+                  <InputLabel id="main-ingredient-label">Ingrediente principal</InputLabel>
+                  <Select
+                    labelId="main-ingredient-label"
+                    id="mainIngredient"
+                    name="mainIngredient"
+                    value={formik.values.mainIngredient}
+                    onChange={formik.handleChange}
+                  >
+                    {ingredients.ingredients.map((item) => (
+                      <MenuItem key={item.id} value={item}>
+                        {item.name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+
               <Grid item xs={6}>
                 <FormControl fullWidth variant="outlined">
-                  <InputLabel htmlFor="vegetarian">Is Vegetarian</InputLabel>
+                  <InputLabel htmlFor="vegetarian">¿Es vegetariano?</InputLabel>
                   <Select
                     id="vegetarian"
                     name="vegetarian"
@@ -274,14 +294,14 @@ const AddMenuForm = () => {
                     onChange={formik.handleChange}
                     value={formik.values.vegetarian}
                   >
-                    <MenuItem value={true}>Yes</MenuItem>
+                    <MenuItem value={true}>Sí</MenuItem>
                     <MenuItem value={false}>No</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
               <Grid item xs={6}>
                 <FormControl fullWidth variant="outlined">
-                  <InputLabel htmlFor="seasonal">Is Seasonal</InputLabel>
+                  <InputLabel htmlFor="seasonal">¿Es de temporada?</InputLabel>
                   <Select
                     id="seasonal"
                     name="seasonal"
@@ -289,7 +309,7 @@ const AddMenuForm = () => {
                     onChange={formik.handleChange}
                     value={formik.values.seasonal}
                   >
-                    <MenuItem value={true}>Yes</MenuItem>
+                    <MenuItem value={true}>Sí</MenuItem>
                     <MenuItem value={false}>No</MenuItem>
                   </Select>
                 </FormControl>
@@ -311,7 +331,7 @@ const AddMenuForm = () => {
             </Grid> */}
             </Grid>
             <Button variant="contained" color="primary" type="submit">
-              Create Menu Item
+              Crear platillo en el menú
             </Button>
           </form>
         </div>

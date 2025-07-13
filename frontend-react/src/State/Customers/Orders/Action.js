@@ -3,25 +3,27 @@ import { createOrderFailure, createOrderRequest, createOrderSuccess, getUsersOrd
 import { GET_USERS_NOTIFICATION_FAILURE, GET_USERS_NOTIFICATION_SUCCESS } from "./ActionTypes";
 
 
-export const createOrder = (reqData) => {
-  return async (dispatch) => {
-    dispatch(createOrderRequest());
-    try {
-      const {data} = await api.post('/api/order', reqData.order,{
+export const createOrder = (reqData) => async (dispatch) => {
+  try {
+    const jwt = localStorage.getItem("jwt"); // <-- obtiene el token del localStorage
+    const { data } = await api.post(
+      "/api/order",
+      reqData.order,
+      {
         headers: {
-            Authorization: `Bearer ${reqData.jwt}`,
-          },
-      });
-      if(data.payment_url){
-        window.location.href=data.payment_url;
+          Authorization: `Bearer ${jwt}`, // <-- ENVÍA EL JWT EN EL HEADER
+        },
       }
-      console.log("created order data",data)
-      dispatch(createOrderSuccess(data));
-    } catch (error) {
-      console.log("error ",error)
-      dispatch(createOrderFailure(error));
+    );
+    if(data.payment_url){
+      window.location.href=data.payment_url;
     }
-  };
+    console.log("created order data",data)
+    dispatch(createOrderSuccess(data));
+  } catch (error) {
+    console.log("error ",error)
+    dispatch(createOrderFailure(error));
+  }
 };
 
 

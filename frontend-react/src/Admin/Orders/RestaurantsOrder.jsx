@@ -13,11 +13,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchRestaurantsOrder } from "../../State/Admin/Order/restaurants.order.action";
 
 const orderStatus = [
-  { label: "Pending", value: "PENDING" },
-  { label: "Completed", value: "COMPLETED" },
-  // { label: "Out For Delivery", value: "OUT_FOR_DELIVERY" },
-  // { label: "Delivered", value: "DELIVERED" },
-  { label: "All", value: "all" },
+  { label: "Pendiente", value: "PENDING" },
+  { label: "Completada", value: "COMPLETED" },
+  { label: "Todas", value: "all" },
 ];
 
 const RestaurantsOrder = () => {
@@ -57,7 +55,7 @@ const RestaurantsOrder = () => {
     <div className="px-2">
       <Card className="p-5">
         <Typography sx={{ paddingBottom: "1rem" }} variant="h5">
-          Order Status
+          Estado de la orden
         </Typography>
         <FormControl className="py-10" component="fieldset">
           <RadioGroup
@@ -79,7 +77,7 @@ const RestaurantsOrder = () => {
         </FormControl>
       </Card>
 
-      <OrdersTable name={"All Orders"} />
+      <OrdersTable name={"Todas las órdenes"} />
     </div>
   );
 };

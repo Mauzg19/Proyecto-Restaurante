@@ -14,7 +14,7 @@ const AddRestaurantCard = () => {
       <div className="flex flex-col items-center">
       <AddIcon sx={{ fontSize: "7rem" }} />
         <h1 className="font-semibold text-gray-200 text-center">
-          Add New Restaurants
+          Agregar nuevo restaurante
         </h1>
         
       </div>

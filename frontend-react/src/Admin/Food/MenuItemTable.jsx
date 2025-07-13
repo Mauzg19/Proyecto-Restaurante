@@ -91,20 +91,20 @@ const MenuItemTable = ({ isDashboard, name }) => {
           <Table aria-label="table in dashboard">
             <TableHead>
               <TableRow>
-                <TableCell>Image</TableCell>
-                <TableCell>Title</TableCell>
+                <TableCell>Imagen</TableCell>
+                <TableCell>Nombre</TableCell>
                 {/* <TableCell sx={{ textAlign: "center" }}>Category</TableCell> */}
                 {!isDashboard && (
                   <TableCell sx={{ textAlign: "" }}>
-                    Ingredients
+                    Ingredientes
                   </TableCell>
                 )}
-                <TableCell sx={{ textAlign: "center" }}>Price</TableCell>
+                <TableCell sx={{ textAlign: "center" }}>Precio</TableCell>
                 {/* <TableCell sx={{ textAlign: "center" }}>Quantity</TableCell> */}
 
-                <TableCell sx={{ textAlign: "center" }}>Availabilty</TableCell>
+                <TableCell sx={{ textAlign: "center" }}>Disponibilidad</TableCell>
                 {!isDashboard && (
-                  <TableCell sx={{ textAlign: "center" }}>Delete</TableCell>
+                  <TableCell sx={{ textAlign: "center" }}>Eliminar</TableCell>
                 )}
               </TableRow>
             </TableHead>
@@ -194,6 +194,15 @@ const MenuItemTable = ({ isDashboard, name }) => {
                   )}
                 </TableRow>
               ))}
+              <TableRow>
+                <TableCell>
+                  {menu.menuItems.map((item) => (
+                    <div key={item.id}>
+                      {item.name}: {item.availableQuantity} available
+                    </div>
+                  ))}
+                </TableCell>
+              </TableRow>
             </TableBody>
           </Table>
         </TableContainer>

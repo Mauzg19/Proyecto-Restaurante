@@ -25,6 +25,8 @@ public class IngredientsItem {
 
 	@ManyToOne
 	private IngredientCategory category;
+
+	private int stock; // Nuevo campo para controlar la cantidad disponible
 	
 	@JsonIgnore
 	@ManyToOne

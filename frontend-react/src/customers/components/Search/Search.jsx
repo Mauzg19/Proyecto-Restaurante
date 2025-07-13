@@ -24,11 +24,11 @@ const Search = () => {
           onChange={(e) => handleSearchMenu(e.target.value)}
           className="p-2 py-3 pl-12 w-full bg-[#242B2E] rounded-sm outline-none"
           type="text"
-          placeholder="search food..."
+          placeholder="Buscar platillo..."
         />
       </div>
       <div>
-        <h1 className="py-5 text-2xl font-semibold">Popular Cuisines</h1>
+        <h1 className="py-5 text-2xl font-semibold">Cocinas populares</h1>
         <div className="flex flex-wrap ">
           {topMeels.slice(0, 9).map((item) => (
             <PopularCuisines image={item.image} title={item.title} />

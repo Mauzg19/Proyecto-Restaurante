@@ -19,12 +19,12 @@ const Profile = () => {
       <div className="lg:w-[80%]">
         <Routes>
         <Route path="/" element={<UserProfile/>} />
-          <Route path="/orders" element={<Orders/>} />
-          <Route path="/address" element={<UsersAddresses/>} />
-          <Route path="/favorites" element={<Favorite/>} />
-          <Route path="/payments" element={<Orders/>} />
-          <Route path="/events" element={<CustomerEvents/>} />
-          <Route path="/notification" element={<Notifications/>} />
+          <Route path="/órdenes" element={<Orders/>} />
+          <Route path="/direcciones" element={<UsersAddresses/>} />
+          <Route path="/favoritos" element={<Favorite/>} />
+          <Route path="/pagos" element={<Orders/>} />
+          <Route path="/eventos" element={<CustomerEvents/>} />
+          <Route path="/notificaciones" element={<Notifications/>} />
         </Routes>
       </div>
     </div>

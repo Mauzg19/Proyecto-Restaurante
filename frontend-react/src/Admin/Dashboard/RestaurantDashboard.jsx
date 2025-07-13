@@ -32,7 +32,7 @@ const RestaurantDashboard = () => {
       <Grid container spacing={1}>
         {/* <Grid item lg={3} xs={12}>
           <AvgCard
-            title={"Total Earnings"}
+            title={"Ganancias totales"}
             value={`Rs. ${450}`}
             growValue={70}
             icon={
@@ -42,7 +42,7 @@ const RestaurantDashboard = () => {
         </Grid>
         <Grid item lg={3} xs={12}>
           <AvgCard
-            title={"Total Selles"}
+            title={"Ventas totales"}
             value={`${390}`}
             growValue={35}
             icon={<SellIcon sx={{ fontSize: "3rem", color: "green" }} />}
@@ -50,7 +50,7 @@ const RestaurantDashboard = () => {
         </Grid>
         <Grid item lg={3} xs={12}>
           <AvgCard
-            title={"Sold Items"}
+            title={"Platillos vendidos"}
             value={`${299}`}
             growValue={30}
             icon={<FastfoodIcon sx={{ fontSize: "3rem", color: "blue" }} />}
@@ -58,7 +58,7 @@ const RestaurantDashboard = () => {
         </Grid>
         <Grid item lg={3} xs={12}>
           <AvgCard
-            title={"Left Items"}
+            title={"Platillos restantes"}
             value={`${1}`}
             growValue={10}
             icon={<FastfoodIcon sx={{ fontSize: "3rem", color: "red" }} />
@@ -67,10 +67,10 @@ const RestaurantDashboard = () => {
           />
         </Grid> */}
         <Grid lg={6} xs={12} item>
-          <OrdersTable name={"Recent Order"} isDashboard={true} />
+          <OrdersTable name={"Órdenes recientes"} isDashboard={true} />
         </Grid>
         <Grid lg={6} xs={12} item>
-          <MenuItemTable isDashboard={true} name={"Recently Added Menu"} />
+          <MenuItemTable isDashboard={true} name={"Menú agregado recientemente"} />
         </Grid>
       </Grid>
     </div>

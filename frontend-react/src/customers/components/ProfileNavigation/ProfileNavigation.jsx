@@ -12,13 +12,13 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import EventIcon from "@mui/icons-material/Event";
 
 const menu = [
-  { title: "Orders", icon: <ShoppingBagIcon /> },
-  { title: "Favorites", icon: <FavoriteIcon /> },
-  { title: "Address", icon: <HomeIcon /> },
-  { title: "Payments", icon: <AccountBalanceWalletIcon /> },
-  { title: "Notification", icon: <NotificationsIcon /> },
-  { title: "Events", icon: <EventIcon /> },
-  { title: "Logout", icon: <LogoutIcon /> },
+  { title: "Órdenes", icon: <ShoppingBagIcon /> },
+  { title: "Favoritos", icon: <FavoriteIcon /> },
+  { title: "Direcciones", icon: <HomeIcon /> },
+  { title: "Pagos", icon: <AccountBalanceWalletIcon /> },
+  { title: "Notificaciones", icon: <NotificationsIcon /> },
+  { title: "Eventos", icon: <EventIcon /> },
+  { title: "Cerrar sesión", icon: <LogoutIcon /> },
 ];
 
 const ProfileNavigation = ({ handleClose, open }) => {

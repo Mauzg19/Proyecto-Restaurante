@@ -79,7 +79,7 @@ const CreateRestaurantForm = () => {
     <div className="py-10 px-5 lg:flex items-center justify-center min-h-screen">
       <div className="lg:max-w-4xl ">
         <h1 className="font-bold text-2xl text-center py-2">
-          Add New Restaurant
+          Agregar nuevo restaurante
         </h1>
         <form onSubmit={formik.handleSubmit} className="space-y-4">
           <Grid container spacing={2}>
@@ -135,7 +135,7 @@ const CreateRestaurantForm = () => {
                 fullWidth
                 id="name"
                 name="name"
-                label="Name"
+              label="Nombre"
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.name}
@@ -146,7 +146,7 @@ const CreateRestaurantForm = () => {
                 fullWidth
                 id="description"
                 name="description"
-                label="Description"
+              label="Descripción"
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.description}
@@ -157,7 +157,7 @@ const CreateRestaurantForm = () => {
                 fullWidth
                 id="cuisineType"
                 name="cuisineType"
-                label="Cuisine Type"
+              label="Tipo de cocina"
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.cuisineType}
@@ -168,7 +168,7 @@ const CreateRestaurantForm = () => {
                 fullWidth
                 id="openingHours"
                 name="openingHours"
-                label="Opening Hours"
+              label="Horario de apertura"
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.openingHours}
@@ -179,7 +179,7 @@ const CreateRestaurantForm = () => {
                 fullWidth
                 id="streetAddress"
                 name="streetAddress"
-                label="Street Address"
+              label="Dirección"
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.streetAddress}
@@ -190,7 +190,7 @@ const CreateRestaurantForm = () => {
                 fullWidth
                 id="city"
                 name="city"
-                label="City"
+              label="Ciudad"
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.city}
@@ -201,7 +201,7 @@ const CreateRestaurantForm = () => {
                 fullWidth
                 id="stateProvince"
                 name="stateProvince"
-                label="State/Province"
+              label="Estado/Provincia"
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.stateProvince}
@@ -212,7 +212,7 @@ const CreateRestaurantForm = () => {
                 fullWidth
                 id="postalCode"
                 name="postalCode"
-                label="Postal Code"
+              label="Código Postal"
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.postalCode}
@@ -223,7 +223,7 @@ const CreateRestaurantForm = () => {
                 fullWidth
                 id="country"
                 name="country"
-                label="Country"
+              label="País"
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.country}
@@ -234,7 +234,7 @@ const CreateRestaurantForm = () => {
                 fullWidth
                 id="email"
                 name="email"
-                label="Email"
+              label="Correo electrónico"
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.email}
@@ -245,7 +245,7 @@ const CreateRestaurantForm = () => {
                 fullWidth
                 id="mobile"
                 name="mobile"
-                label="Mobile"
+              label="Teléfono"
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.mobile}
@@ -256,7 +256,7 @@ const CreateRestaurantForm = () => {
                 fullWidth
                 id="twitter"
                 name="twitter"
-                label="Twitter"
+              label="Twitter"
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.twitter}
@@ -267,7 +267,7 @@ const CreateRestaurantForm = () => {
                 fullWidth
                 id="instagram"
                 name="instagram"
-                label="Instagram"
+              label="Instagram"
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.instagram}
@@ -276,7 +276,7 @@ const CreateRestaurantForm = () => {
             
           </Grid>
           <Button variant="contained" color="primary" type="submit">
-            Create Restaurant
+            Crear restaurante
           </Button>
         </form>
       </div>

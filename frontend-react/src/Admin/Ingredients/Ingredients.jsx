@@ -61,7 +61,7 @@ const Ingredients = () => {
         <Grid  item xs={12} lg={8}>
           <Card className="mt-1">
             <CardHeader
-              title={"Ingredients"}
+              title={"Ingredientes"}
               sx={{
                 pt: 2,
                 alignItems: "center",
@@ -78,13 +78,11 @@ const Ingredients = () => {
               <Table sx={{}} aria-label="table in dashboard">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Id</TableCell>
-
-                    <TableCell>Name</TableCell>
-
-                    <TableCell>Category</TableCell>
-
-                    <TableCell>Availability</TableCell>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Nombre</TableCell>
+                    <TableCell>Categoría</TableCell>
+                    <TableCell>Disponibilidad</TableCell>
+                    <TableCell>Stock</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -101,15 +99,15 @@ const Ingredients = () => {
 
                       <TableCell className="">{item.name}</TableCell>
                       <TableCell className="">{item.category.name}</TableCell>
-
                       <TableCell className="">
                         <Button
                           onClick={() => handleUpdateStocke(item.id)}
                           color={item.inStoke ? "success" : "primary"}
                         >
-                          {item.inStoke ? "in stock" : "out of stock"}
+                          {item.inStoke ? "En stock" : "Sin stock"}
                         </Button>
                       </TableCell>
+                      <TableCell>{item.stock}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

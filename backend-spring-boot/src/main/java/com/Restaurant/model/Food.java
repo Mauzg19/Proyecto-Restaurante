@@ -42,6 +42,9 @@ public class Food {
     @ManyToMany
     private List<IngredientsItem> ingredients=new ArrayList<>();
 
+    @ManyToOne
+    private IngredientsItem mainIngredient; // Nuevo campo para el ingrediente principal
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDate;
 

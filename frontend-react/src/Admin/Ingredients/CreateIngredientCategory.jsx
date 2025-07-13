@@ -42,11 +42,11 @@ const CreateIngredientCategoryForm = ({ handleClose }) => {
     <div className=" ">
       <div className="p-5">
         <h1 className="text-gray-400 text-center text-xl pb-10">
-          Create Ingredient Category
+          Crear categoría de ingrediente
         </h1>
         <form className="space-y-5" onSubmit={handleFormSubmit}>
           <TextField
-            label="Category Name"
+            label="Nombre de la categoría"
             name="name"
             value={formData.name}
             onChange={handleInputChange}
@@ -54,7 +54,7 @@ const CreateIngredientCategoryForm = ({ handleClose }) => {
           />
 
           <Button type="submit" variant="contained" color="primary">
-            Create
+            Crear
           </Button>
         </form>
       </div>

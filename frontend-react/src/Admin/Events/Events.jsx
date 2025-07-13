@@ -96,7 +96,7 @@ const Events = () => {
           variant="contained"
           color="primary"
         >
-          Create New Event
+          Crear nuevo evento
         </Button>
       </div>
 
@@ -125,7 +125,7 @@ const Events = () => {
               <Grid item xs={12}>
                 <TextField
                   name="image"
-                  label="Image URL"
+                  label="URL de la imagen"
                   variant="outlined"
                   fullWidth
                   value={formValues.image}
@@ -135,7 +135,7 @@ const Events = () => {
               <Grid item xs={12}>
                 <TextField
                   name="location"
-                  label="Location"
+                  label="Ubicación"
                   variant="outlined"
                   fullWidth
                   value={formValues.location}
@@ -145,7 +145,7 @@ const Events = () => {
               <Grid item xs={12}>
                 <TextField
                   name="name"
-                  label="Event Name"
+                  label="Nombre del evento"
                   variant="outlined"
                   fullWidth
                   value={formValues.name}
@@ -156,7 +156,7 @@ const Events = () => {
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DateTimePicker
                     renderInput={(props) => <TextField {...props} />}
-                    label="Start Date and Time"
+                    label="Fecha y hora de inicio"
                     value={formValues.startedAt}
                     onChange={(newValue) =>
                       handleDateChange(newValue, "startedAt")
@@ -171,7 +171,7 @@ const Events = () => {
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DateTimePicker
                     renderInput={(props) => <TextField {...props} />}
-                    label="End Date and Time"
+                    label="Fecha y hora de finalización"
                     value={formValues.endsAt}
                     onChange={(newValue) =>
                       handleDateChange(newValue, "endsAt")
@@ -185,7 +185,7 @@ const Events = () => {
             </Grid>
             <Box mt={2}>
               <Button variant="contained" color="primary" type="submit">
-                Submit
+                Crear evento
               </Button>
             </Box>
           </form>

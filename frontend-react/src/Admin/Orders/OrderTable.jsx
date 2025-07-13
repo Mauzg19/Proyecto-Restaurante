@@ -85,17 +85,15 @@ const OrdersTable = ({ isDashboard, name }) => {
           <Table sx={{}} aria-label="table in dashboard">
             <TableHead>
               <TableRow>
-              <TableCell>Id</TableCell>
-                <TableCell>Image</TableCell>
-                {/* {!isDashboard && <TableCell>Title</TableCell>} */}
-                <TableCell>Customer</TableCell>
-                <TableCell>Price</TableCell>
-             
-                <TableCell>Name</TableCell>
-                {!isDashboard && <TableCell>Ingredients</TableCell>}
-                {!isDashboard &&<TableCell>Status</TableCell>}
+              <TableCell>ID</TableCell>
+                <TableCell>Imagen</TableCell>
+                <TableCell>Cliente</TableCell>
+                <TableCell>Precio</TableCell>
+                <TableCell>Nombre</TableCell>
+                {!isDashboard && <TableCell>Ingredientes</TableCell>}
+                {!isDashboard &&<TableCell>Estado</TableCell>}
                 {!isDashboard && (
-                  <TableCell sx={{ textAlign: "center" }}>Update</TableCell>
+                  <TableCell sx={{ textAlign: "center" }}>Actualizar</TableCell>
                 )}
                 {/* {!isDashboard && (
                   <TableCell sx={{ textAlign: "center" }}>Delete</TableCell>
@@ -183,7 +181,7 @@ const OrdersTable = ({ isDashboard, name }) => {
                               handleUpdateStatusMenuClick(event, index)
                             }
                           >
-                            Status
+                            Estado
                           </Button>
                           <Menu
                             id={`basic-menu-${item?.id}`}

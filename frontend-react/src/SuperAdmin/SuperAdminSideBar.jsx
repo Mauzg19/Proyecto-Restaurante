@@ -17,11 +17,11 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const menu = [
 
-  { title: "Dashboard", icon: <Dashboard />, path: "/" },
-  { title: "Restaurants", icon: <ShoppingBagIcon />, path: "/restaurants" },
-  { title: "Customers", icon: <ShopTwoIcon />, path: "/customers" },
-  { title: "Restaurant Request", icon: <AddCircleIcon />, path: "/restaurant-request" },
-  { title: "Logout", icon: <LogoutIcon />, path: "/" },
+  { title: "Panel", icon: <Dashboard />, path: "/" },
+  { title: "Restaurantes", icon: <ShoppingBagIcon />, path: "/restaurants" },
+  { title: "Clientes", icon: <ShopTwoIcon />, path: "/customers" },
+  { title: "Solicitudes de restaurante", icon: <AddCircleIcon />, path: "/restaurant-request" },
+  { title: "Cerrar sesión", icon: <LogoutIcon />, path: "/" },
 ];
 export default function SuperAdminSidebar({ handleClose, open }) {
   const isSmallScreen = useMediaQuery("(max-width:1080px)");

@@ -53,7 +53,7 @@ const LoginForm = () => {
               variant="outlined"
               margin="normal"
               fullWidth
-              label="Email Address"
+              label="Correo electrónico"
               name="email"
               id="email"
               autoComplete="email"
@@ -64,7 +64,7 @@ const LoginForm = () => {
               variant="outlined"
               margin="normal"
               fullWidth
-              label="Password"
+              label="Contraseña"
               name="password"
               type="password"
               id="password"
@@ -78,14 +78,14 @@ const LoginForm = () => {
               color="primary"
               sx={{ mt: 2,padding:"1rem" }}
             >
-              Login
+              Iniciar sesión
             </Button>
           </Form>
         </Formik>
         <Typography variant="body2" align="center" sx={{ mt: 3 }}>
-          Don't have an account?{" "}
-          <Button onClick={() => navigate("/account/register")}>
-            Register
+          ¿No tienes una cuenta?{" "}
+          <Button onClick={() => navigate("/account/register")}> 
+            Registrarse
           </Button>
         </Typography>
       </div>

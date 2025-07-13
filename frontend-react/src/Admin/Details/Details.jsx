@@ -31,6 +31,27 @@ const Details = () => {
       })
     );
   };
+
+  const renderDashboardLink = () => (
+    <a
+      href="https://app.powerbi.com/reportEmbed?reportId=cfd1fb0e-f470-4134-a915-6e2cb82c840c&autoAuth=true&ctid=9d12bf3f-e4f6-47ab-912f-1a2f0fc48aa4"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        display: "inline-block",
+        margin: "16px 0",
+        padding: "10px 20px",
+        background: "#2563eb",
+        color: "#fff",
+        borderRadius: "6px",
+        textDecoration: "none",
+        fontWeight: "bold",
+      }}
+    >
+      Ver Dashboard de Análisis
+    </a>
+  );
+
   return (
     <div className="lg:px-20 px-5">
       <div className="py-5 flex justify-center items-center gap-5">
@@ -47,8 +68,8 @@ const Details = () => {
             color={restaurant.usersRestaurant?.open ? "error" : "primary"}
           >
             {restaurant.usersRestaurant?.open
-              ? "Close"
-              : "Open"}
+              ? "Cerrar"
+              : "Abrir"}
           </Button>
         </div>
       </div>
@@ -57,12 +78,12 @@ const Details = () => {
         <Grid item xs={12}>
           <Card>
             <CardHeader
-              title={<span className="text-gray-300"> Restaurant</span>}
+              title={<span className="text-gray-300"> Restaurante</span>}
             />
             <CardContent>
               <div className="space-y-4 text-gray-200">
                 <div className="flex">
-                  <p className="w-48">Owner</p>
+                  <p className="w-48">Propietario</p>
                   <p className="text-gray-400">
                     {" "}
                     <span className="pr-5">-</span>{" "}
@@ -70,7 +91,7 @@ const Details = () => {
                   </p>
                 </div>
                 <div className="flex">
-                  <p className="w-48">Restaurant Name</p>
+                  <p className="w-48">Nombre del restaurante</p>
                   <p className="text-gray-400">
                     {" "}
                     <span className="pr-5">-</span>{" "}
@@ -78,7 +99,7 @@ const Details = () => {
                   </p>
                 </div>
                 <div className="flex">
-                  <p className="w-48">Cuisine Type</p>
+                  <p className="w-48">Tipo de cocina</p>
                   <p className="text-gray-400">
                     {" "}
                     <span className="pr-5">-</span>{" "}
@@ -86,7 +107,7 @@ const Details = () => {
                   </p>
                 </div>
                 <div className="flex">
-                  <p className="w-48">Opning Hours</p>
+                  <p className="w-48">Horario de apertura</p>
                   <p className="text-gray-400">
                     {" "}
                     <span className="pr-5">-</span>{" "}
@@ -94,17 +115,17 @@ const Details = () => {
                   </p>
                 </div>
                 <div className="flex">
-                  <p className="w-48">Status</p>
+                  <p className="w-48">Estado</p>
                   <div className="text-gray-400">
                     {" "}
                     <span className="pr-5">-</span>{" "}
                     {restaurant.usersRestaurant?.open ? (
                       <span className="px-5 py-2 rounded-full bg-green-400 text-gray-950">
-                        Open
+                        Abierto
                       </span>
                     ) : (
                       <span className="text-black px-5 py-2 rounded-full bg-red-400">
-                        Closed
+                        Cerrado
                       </span>
                     )}
                   </div>
@@ -116,12 +137,12 @@ const Details = () => {
         <Grid item xs={12} lg={5}>
           <Card>
             <CardHeader
-              title={<span className="text-gray-300"> Address</span>}
+              title={<span className="text-gray-300"> Dirección</span>}
             />
             <CardContent>
               <div className="space-y-3 text-gray-200">
                 <div className="flex">
-                  <p className="w-48">Country</p>
+                  <p className="w-48">País</p>
                   <p className="text-gray-400">
                     {" "}
                     <span className="pr-5">-</span>{" "}
@@ -129,7 +150,7 @@ const Details = () => {
                   </p>
                 </div>
                 <div className="flex">
-                  <p className="w-48">City</p>
+                  <p className="w-48">Ciudad</p>
                   <p className="text-gray-400">
                     {" "}
                     <span className="pr-5">-</span>{" "}
@@ -137,7 +158,7 @@ const Details = () => {
                   </p>
                 </div>
                 <div className="flex">
-                  <p className="w-48">Postal Code</p>
+                  <p className="w-48">Código Postal</p>
                   <p className="text-gray-400">
                     {" "}
                     <span className="pr-5">-</span>{" "}
@@ -145,7 +166,7 @@ const Details = () => {
                   </p>
                 </div>
                 <div className="flex">
-                  <p className="w-48">Street Address</p>
+                  <p className="w-48">Dirección</p>
                   <p className="text-gray-400">
                     {" "}
                     <span className="pr-5">-</span>{" "}
@@ -159,12 +180,12 @@ const Details = () => {
         <Grid item xs={12} lg={7}>
           <Card>
             <CardHeader
-              title={<span className="text-gray-300"> Contact</span>}
+              title={<span className="text-gray-300"> Contacto</span>}
             />
             <CardContent>
               <div className="space-y-3 text-gray-200">
                 <div className="flex">
-                  <p className="w-48">Email</p>
+                  <p className="w-48">Correo electrónico</p>
                   <p className="text-gray-400">
                     {" "}
                     <span className="pr-5">-</span>
@@ -172,7 +193,7 @@ const Details = () => {
                   </p>
                 </div>
                 <div className="flex">
-                  <p className="w-48">Mobile</p>
+                  <p className="w-48">Teléfono</p>
                   <p className="text-gray-400">
                     {" "}
                     <span className="pr-5">-</span>
@@ -181,7 +202,7 @@ const Details = () => {
                   </p>
                 </div>
                 <div className="flex items-center">
-                  <p className="w-48">Social</p>
+                  <p className="w-48">Redes sociales</p>
                   <div className="text-gray-400 flex items-center pb-3">
                     {" "}
                     <span className="pr-5">-</span>{" "}
@@ -247,6 +268,7 @@ const Details = () => {
           </Card>
         </Grid>
       </Grid>
+      {renderDashboardLink()}
     </div>
   );
 };

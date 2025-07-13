@@ -30,7 +30,7 @@ const Category = () => {
     <div>
          <Card className="mt-1">
         <CardHeader
-          title={"Categories"}
+          title={"Categorías"}
           sx={{
             pt: 2,
             alignItems: "center",
@@ -46,6 +46,7 @@ const Category = () => {
                 
              
                 <TableCell>Name</TableCell>
+                <TableCell>Nombre</TableCell>
              
                
               

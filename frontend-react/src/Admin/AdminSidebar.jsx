@@ -18,14 +18,14 @@ import CategoryIcon from '@mui/icons-material/Category';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 
 const menu = [
-  { title: "Dashboard", icon: <Dashboard />, path: "/" },
-  { title: "Orders", icon: <ShoppingBagIcon />, path: "/orders" },
-  { title: "Menu", icon: <ShopTwoIcon />, path: "/menu" },
-  { title: "Food Category", icon: <CategoryIcon />, path: "/category" },
-  { title: "Ingredients", icon: <FastfoodIcon />, path: "/ingredients" },
-  { title: "Events", icon: <EventIcon />, path: "/event" },
-  { title: "Details", icon: <AdminPanelSettingsIcon />, path: "/details" },
-  { title: "Logout", icon: <LogoutIcon />, path: "/" },
+  { title: "Panel", icon: <Dashboard />, path: "/" },
+  { title: "Órdenes", icon: <ShoppingBagIcon />, path: "/orders" },
+  { title: "Menú", icon: <ShopTwoIcon />, path: "/menu" },
+  { title: "Categoría de comida", icon: <CategoryIcon />, path: "/category" },
+  { title: "Ingredientes", icon: <FastfoodIcon />, path: "/ingredients" },
+  { title: "Eventos", icon: <EventIcon />, path: "/event" },
+  { title: "Detalles", icon: <AdminPanelSettingsIcon />, path: "/details" },
+  { title: "Cerrar sesión", icon: <LogoutIcon />, path: "/" },
   
 ];
 export default function AdminSidebar({ handleClose, open }) {
@@ -36,14 +36,18 @@ export default function AdminSidebar({ handleClose, open }) {
 
 
   const handleNavigate = (item) => {
-    navigate(`/admin/restaurant${item.path}`);
-    if (item.title === "Logout") {
-      navigate("/");
+    if (item.title === "Cerrar sesión" || item.title === "Logout") {
       dispatch(logout());
-    } else if (item.title === "Restaurants") {
-      navigate("/admin");
+      navigate("/");
+      handleClose();
+      return;
     }
-    handleClose()
+    if (item.title === "Restaurantes") {
+      navigate("/admin");
+    } else {
+      navigate(`/admin/restaurant${item.path}`);
+    }
+    handleClose();
   };
 
   return (

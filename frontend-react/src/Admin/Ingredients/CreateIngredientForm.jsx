@@ -48,22 +48,22 @@ const CreateIngredientForm = ({handleClose}) => {
   return (
     <div className=' '>
         <div className='p-5'>
-          <h1 className='text-gray-400 text-center text-xl pb-10'>Create Ingredient</h1>
+          <h1 className='text-gray-400 text-center text-xl pb-10'>Crear ingrediente</h1>
         <form className="space-y-5" onSubmit={handleFormSubmit}>
       <TextField
-        label="Ingredient"
+        label="Ingrediente"
         name="name"
         value={formData.name}
         onChange={handleInputChange}
         fullWidth
       />
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Category</InputLabel>
+        <InputLabel id="demo-simple-select-label">Categoría</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={formData.ingredientCategoryId}
-          label="Category"
+          label="Categoría"
           name='ingredientCategoryId'
           onChange={handleInputChange}
         >
@@ -73,7 +73,7 @@ const CreateIngredientForm = ({handleClose}) => {
       </FormControl>
      
       <Button type="submit" variant="contained" color="primary">
-        Create
+        Crear
       </Button>
     </form>
     </div>
