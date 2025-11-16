@@ -20,6 +20,7 @@ import {
 } from "@mui/material";
 
 import React, { useEffect, useState } from "react";
+import formatCurrency from "../../config/formatCurrency";
 
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -128,7 +129,7 @@ const OrdersTable = ({ isDashboard, name }) => {
                       {item?.customer.email}
                     </TableCell>
 
-                    <TableCell>₹{item?.totalAmount}</TableCell>
+                    <TableCell>{formatCurrency(item?.totalAmount)}</TableCell>
                     
                     <TableCell className="">
                       {item.items.map((orderItem) => (

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getRestaurantById, getRestaurantsCategory } from '../../State/Customers/Restaurant/restaurant.action';
+import { getRestaurantById, getRestaurantsCategory, deleteCategoryAction } from '../../State/Customers/Restaurant/restaurant.action';
 import { Box, Card, CardHeader, IconButton, Modal, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { Create } from '@mui/icons-material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 import CreateCategory from './CreateCategory';
 
 const style = {
@@ -23,7 +25,18 @@ const Category = () => {
     const jwt = localStorage.getItem("jwt")
     const [openCreateCategory, setOpenCreateCategory] = React.useState(false);
     const handleOpenCreateCategory = () => setOpenCreateCategory(true);
-    const handleCloseCreateCategory = () => setOpenCreateCategory(false);
+  const handleCloseCreateCategory = () => { setOpenCreateCategory(false); setEditingCategory(null); };
+    const [editingCategory, setEditingCategory] = React.useState(null);
+
+    const handleDelete = (categoryId) => {
+      if(!window.confirm('¿Eliminar categoría?')) return;
+      dispatch(deleteCategoryAction({ categoryId, jwt: auth.jwt || jwt }));
+    }
+
+    const handleEdit = (category) => {
+      setEditingCategory(category);
+      handleOpenCreateCategory();
+    }
 
     
   return (
@@ -53,7 +66,7 @@ const Category = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {restaurant.categories.map((item, index) => (
+        {restaurant.categories.map((item, index) => (
                   <TableRow
                     className="cursor-pointer"
                     hover
@@ -65,8 +78,14 @@ const Category = () => {
                     <TableCell>{item?.id}</TableCell>
                 
                     
-                    <TableCell className="">
-                      {item.name}
+                    <TableCell className="">{item.name}</TableCell>
+                    <TableCell>
+                      <IconButton onClick={() => handleEdit(item)}>
+                        <EditIcon />
+                      </IconButton>
+                      <IconButton onClick={() => handleDelete(item.id)}>
+                        <DeleteIcon color="error" />
+                      </IconButton>
                     </TableCell>
           
                     
@@ -83,7 +102,7 @@ const Category = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <CreateCategory handleClose={handleCloseCreateCategory}/>
+          <CreateCategory handleClose={handleCloseCreateCategory} initialCategory={editingCategory} />
         </Box>
       </Modal>
     </div>

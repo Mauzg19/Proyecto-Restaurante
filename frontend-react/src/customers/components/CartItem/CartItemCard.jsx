@@ -1,5 +1,6 @@
 import { Button, Chip, Divider, IconButton } from "@mui/material";
 import React from "react";
+import formatCurrency from '../../../config/formatCurrency'
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { useDispatch, useSelector } from "react-redux";
@@ -64,7 +65,7 @@ const CartItemCard = ({ item }) => {
             }
           </div>
 
-          <p>₹{item.totalPrice}</p>
+          <p>{formatCurrency(item.totalPrice)}</p>
         </div>
       </div>
       <div className="pt-3 space-x-2">

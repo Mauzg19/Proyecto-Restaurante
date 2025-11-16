@@ -1,5 +1,6 @@
 import { Button, Card } from "@mui/material";
 import React from "react";
+import formatCurrency from '../../../config/formatCurrency'
 
 const OrderCard = ({order,status}) => {
   return (
@@ -12,7 +13,7 @@ const OrderCard = ({order,status}) => {
         />
         <div>
           <p>{order.food.name}</p>
-          <p className="text-gray-400">₹{order.food.price}</p>
+          <p className="text-gray-400">{formatCurrency(order.food.price)}</p>
         </div>
       </div>
       <div>

@@ -1,5 +1,6 @@
 import { Button, Card, CardContent, CardHeader, IconButton } from "@mui/material";
 import React from "react";
+import formatCurrency from '../../../config/formatCurrency'
 import StarIcon from "@mui/icons-material/Star";
 import EastIcon from "@mui/icons-material/East";
 import { useDispatch } from "react-redux";
@@ -36,7 +37,7 @@ const SearchDishCard = ({item}) => {
           <div className="w-[70%] space-y-2">
            
             <p className="font-semibold">{item.name} </p>
-            <p>₹{item.price}</p>
+            <p>{formatCurrency(item.price)}</p>
             <p className="text-gray-400 text-sm">
               {item.description}
             </p>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import formatCurrency from "../../config/formatCurrency";
 import { useFormik } from "formik";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -83,6 +84,28 @@ const AddMenuForm = () => {
       console.log("values ----- ", values);
     },
   });
+
+  const [priceDisplay, setPriceDisplay] = useState(
+    formik.values.price ? formatCurrency(formik.values.price) : ""
+  );
+
+  // sincronizar display cuando cambie el valor numérico
+  useEffect(() => {
+    setPriceDisplay(
+      formik.values.price !== "" && formik.values.price !== null && formik.values.price !== undefined
+        ? formatCurrency(formik.values.price)
+        : ""
+    );
+  }, [formik.values.price]);
+
+  const handlePriceInputChange = (e) => {
+    const val = e.target.value;
+    // eliminar todo lo que no sea dígito, signo negativo o punto decimal
+    const raw = String(val).replace(/[^0-9.-]+/g, "");
+    const num = raw === "" ? "" : Number(raw);
+    formik.setFieldValue("price", num);
+    setPriceDisplay(num === "" || Number.isNaN(num) ? "" : formatCurrency(num));
+  };
 
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
@@ -200,9 +223,9 @@ const AddMenuForm = () => {
                   name="price"
                   label="Precio"
                   variant="outlined"
-                  type="number"
-                  onChange={formik.handleChange}
-                  value={formik.values.price}
+                  type="text"
+                  onChange={handlePriceInputChange}
+                  value={priceDisplay}
                   error={formik.touched.price && Boolean(formik.errors.price)}
                   helperText={formik.touched.price && formik.errors.price}
                 />

@@ -1,32 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button, makeStyles, Card } from '@mui/material';
 import { Create } from '@mui/icons-material';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createCategoryAction } from '../../State/Customers/Restaurant/restaurant.action';
+import { createCategoryAction, updateCategoryAction } from '../../State/Customers/Restaurant/restaurant.action';
 
 
 
-const CreateCategory = ({handleClose}) => {
+const CreateCategory = ({handleClose, initialCategory = null}) => {
     const {id}=useParams();
     const dispatch=useDispatch();
     const {auth,restaurant}=useSelector(store=>store)
     const jwt = localStorage.getItem("jwt")
- 
+
   const [formData, setFormData] = useState({
-    categoryName: '',
+    categoryName: initialCategory?.name || '',
     restaurantId: '',
   });
 
+  useEffect(() => {
+    if (initialCategory) {
+      setFormData((f) => ({ ...f, categoryName: initialCategory.name || '' }));
+    } else {
+      setFormData((f) => ({ ...f, categoryName: '' }));
+    }
+  }, [initialCategory]);
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    const data={
-        name:formData.categoryName,
-        restaurant:{
-            id
-        }
+  const restaurantId = restaurant.usersRestaurant?.id || id;
+  const data={
+    name:formData.categoryName,
+    restaurant:{
+      id: restaurantId
     }
-    dispatch(createCategoryAction({reqData:data, jwt: auth.jwt || jwt}))
+  }
+    if(initialCategory && initialCategory.id){
+      dispatch(updateCategoryAction({ categoryId: initialCategory.id, data, jwt: auth.jwt || jwt }))
+    } else {
+      dispatch(createCategoryAction({reqData:data, jwt: auth.jwt || jwt}))
+    }
     setFormData({
       categoryName: '',
       restaurantId: '',

@@ -4,9 +4,9 @@ import { Create } from "@mui/icons-material";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createCategoryAction } from "../../State/Customers/Restaurant/restaurant.action";
-import { createIngredientCategory } from "../../State/Admin/Ingredients/Action";
+import { createIngredientCategory, updateIngredientCategory } from "../../State/Admin/Ingredients/Action";
 
-const CreateIngredientCategoryForm = ({ handleClose }) => {
+const CreateIngredientCategoryForm = ({ handleClose, initialCategory = null }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { auth, restaurant } = useSelector((store) => store);
@@ -15,18 +15,31 @@ const CreateIngredientCategoryForm = ({ handleClose }) => {
   const [formData, setFormData] = useState({
     name: "",
   });
+  const [editingCategory, setEditingCategory] = useState(initialCategory);
+
+  // prefill when initialCategory is provided
+  React.useEffect(() => {
+    if (initialCategory) {
+      console.log('CreateIngredientCategory initialCategory', initialCategory);
+      setEditingCategory(initialCategory);
+      setFormData({ name: initialCategory.name || "" });
+    }
+  }, [initialCategory]);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log("Form submitted:", formData);
-    setFormData({
-      name: "",
-    });
+    console.log("CreateIngredientCategory submit, editingCategory=", editingCategory, "formData=", formData);
     const data = {
       name: formData.name,
       restaurantId: restaurant.usersRestaurant.id,
     };
-    dispatch(createIngredientCategory({ data, jwt: auth.jwt || jwt }));
+    if (editingCategory && editingCategory.id) {
+      dispatch(updateIngredientCategory({ id: editingCategory.id, data, jwt: auth.jwt || jwt }));
+    } else {
+      dispatch(createIngredientCategory({ data, jwt: auth.jwt || jwt }));
+    }
+    setFormData({ name: "" });
+    setEditingCategory(null);
     handleClose();
   };
 

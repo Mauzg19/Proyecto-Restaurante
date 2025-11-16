@@ -1,10 +1,25 @@
-li{
-    list-style: none;
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
 }
 
-.logo{
+.logo-img {
+    width: 69px; /* tamaño más grande para mejor visibilidad */
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px; /* o 0 si quieres esquinas cuadradas */
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.logo {
     font-family: 'Playball', cursive;
-    
-/* font-family: 'Playball', cursive; */
-/* font-family: 'Poppins', sans-serif; */
+    font-size: 1.8rem; /* texto más proporcional */
+    color: white;
+    font-weight: 600;
 }

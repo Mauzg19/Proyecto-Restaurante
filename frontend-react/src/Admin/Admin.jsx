@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import AdminDashboard from "./Dashboard/AdminDashboard";
+// AdminDashboard import removed (not used here)
 import AdminSidebar from "./AdminSidebar";
 import RestaurantDashboard from "./Dashboard/RestaurantDashboard";
 import RestaurantsOrder from "./Orders/RestaurantsOrder";
@@ -9,6 +9,7 @@ import AddMenuForm from "./Food/AddMenuForm";
 import CreateRestaurantForm from "./AddRestaurants/CreateRestaurantForm";
 import IngredientTable from "./Events/Events";
 import Category from "./Category/Category";
+import PrediccionCategoria from "./Prediction/PrediccionCategoria";
 import Ingredients from "./Ingredients/Ingredients";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -26,7 +27,7 @@ const Admin = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
   const handleOpenSideBar = () => setOpenSideBar(true);
   const handleCloseSideBar = () => setOpenSideBar(false);
-  const { auth, restaurant, ingredients } = useSelector((store) => store);
+  const { auth, restaurant } = useSelector((store) => store);
   const jwt = localStorage.getItem("jwt");
   useEffect(() => {
     if (restaurant.usersRestaurant) {
@@ -69,6 +70,7 @@ const Admin = () => {
             <Route path="/event" element={<IngredientTable />} />
             <Route path="/ingredients" element={<Ingredients />} />
             <Route path="/category" element={<Category />} />
+            <Route path="/prediction" element={<PrediccionCategoria />} />
             <Route path="/details" element={<Details />} />
           </Routes>
         </div>

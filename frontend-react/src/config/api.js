@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URL = "http://localhost:5454";
+export const API_URL = "https://backend-spring-boot-production-bea1.up.railway.app";
 
 
 export const api = axios.create({

@@ -20,6 +20,7 @@ import {
   
   import { useDispatch, useSelector } from "react-redux";
   import { getMenuItemsByRestaurantId } from "../../State/Customers/Menu/menu.action";
+import formatCurrency from "../../config/formatCurrency";
   
   const RestaurantRequestTable = ({ isDashboard, name }) => {
     const dispatch = useDispatch();
@@ -88,7 +89,7 @@ import {
                       {item.category.name}
                     </TableCell>
                     <TableCell sx={{ textAlign: "center" }}>
-                      ₹{item.price}
+                 {formatCurrency(item.price)}
                     </TableCell>
                     <TableCell sx={{ textAlign: "center" }}>
                       {item.quantity || 10}
