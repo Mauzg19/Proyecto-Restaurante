@@ -100,6 +100,20 @@ const restaurantReducer = (state = initialState, action) => {
         loading: false,
         categories: [...state.categories, action.payload],
       };
+    case actionTypes.UPDATE_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        categories: state.categories.map((c) =>
+          c.id === action.payload.id ? action.payload : c
+        ),
+      };
+    case actionTypes.DELETE_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        categories: state.categories.filter((c) => c.id !== action.payload),
+      };
     case actionTypes.GET_RESTAURANTS_CATEGORY_SUCCESS:
       return {
         ...state,

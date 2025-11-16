@@ -26,13 +26,13 @@ p{
 
 /* Style the scrollbar thumb */
 ::-webkit-scrollbar-thumb {
-  background-color: #e91e63; /* Set the color of the scrollbar thumb */
+  background-color: #fb881385; /* Set the color of the scrollbar thumb */
   border-radius: 6px; /* Add rounded corners to the thumb */
 }
 
 /* Style the scrollbar track on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #ff0055; /* Change the color on hover */
+  background-color: #fb881385; /* Change the color on hover */
 }
 
 @tailwind base;

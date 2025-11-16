@@ -105,3 +105,68 @@ export const updateStockOfIngredient = ({id,jwt}) => {
     }
   };
 };
+
+export const deleteIngredient = ({id,jwt}) => {
+  return async (dispatch) => {
+    try {
+      const res = await api.delete(`/api/admin/ingredients/${id}`, {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      });
+      console.log("delete ingredient ", res.data);
+      // Optionally you can dispatch an action to remove it from store
+      dispatch({ type: 'DELETE_INGREDIENT_SUCCESS', payload: id });
+    } catch (error) {
+      console.log("error delete ingredient", error);
+    }
+  };
+};
+
+export const deleteIngredientCategory = ({id,jwt}) => {
+  return async (dispatch) => {
+    try {
+      const res = await api.delete(`/api/admin/ingredients/category/${id}`, {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      });
+      console.log("delete ingredient category ", res.data);
+      dispatch({ type: 'DELETE_INGREDIENT_CATEGORY_SUCCESS', payload: id });
+    } catch (error) {
+      console.log("error delete ingredient category", error);
+    }
+  };
+};
+
+export const updateIngredient = ({id,data,jwt}) => {
+  return async (dispatch) => {
+    try {
+      const res = await api.put(`/api/admin/ingredients/${id}`, data, {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      });
+      console.log("update ingredient ", res.data);
+      dispatch({ type: 'UPDATE_INGREDIENT_SUCCESS', payload: res.data });
+    } catch (error) {
+      console.log("error update ingredient", error);
+    }
+  };
+};
+
+export const updateIngredientCategory = ({id,data,jwt}) => {
+  return async (dispatch) => {
+    try {
+      const res = await api.put(`/api/admin/ingredients/category/${id}`, data, {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      });
+      console.log("update ingredient category ", res.data);
+      dispatch({ type: 'UPDATE_INGREDIENT_CATEGORY_SUCCESS', payload: res.data });
+    } catch (error) {
+      console.log("error update ingredient category", error);
+    }
+  };
+};

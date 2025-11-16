@@ -63,15 +63,27 @@ const Navbar = () => {
   };
 
   return (
-    <div className="px-5 z-50 py-[.8rem] bg-green-500  lg:px-20 flex justify-between">
+    <div className="px-5 z-50 py-[.8rem] bg-[#fb881385] lg:px-20 flex justify-between">
+
       <div className="flex items-center space-x-4">
         <div
           onClick={navigateToHome}
           className="lg:mr-10 cursor-pointer flex items-center space-x-4"
         >
-          <li className="logo font-semibold text-gray-300 text-2xl">
-            Restaurant
-          </li>
+          <div className="logo-container flex items-center space-x-3">
+            <img
+              src="/Logo-eslogan.png"
+              alt="Logo Restaurant"
+              className="logo-img"
+              onError={(e) => {
+                // Si la imagen no está disponible, ocultarla para evitar el icono roto
+                e.target.style.display = "none";
+              }}
+            />
+            <li className="logo font-semibold text-gray-300 text-2xl">
+              Restaurant Fast
+            </li>
+          </div>
         </div>
         {/* <li className="font font-semibold">Home</li> */}
       </div>
@@ -120,9 +132,9 @@ const Navbar = () => {
                   : navigate("/super-admin")
               }
             >
-              Profile
+              Perfil
             </MenuItem>
-            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
           </Menu>
         </div>
 

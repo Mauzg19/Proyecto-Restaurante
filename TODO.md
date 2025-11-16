@@ -1,0 +1,5 @@
+- [x] Update frontend API_URL to deployed backend URL
+- [x] Update backend CORS to allow deployed frontend
+- [x] Update password reset email link to deployed frontend
+- [ ] Redeploy frontend after API_URL change
+- [ ] Redeploy backend after CORS and email changes

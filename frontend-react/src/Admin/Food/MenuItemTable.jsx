@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 
 import React, { useEffect } from "react";
+import formatCurrency from "../../config/formatCurrency";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -172,7 +173,7 @@ const MenuItemTable = ({ isDashboard, name }) => {
                     </TableCell>
                   )}
                   <TableCell sx={{ textAlign: "center" }}>
-                    ₹{item.price}
+                    {formatCurrency(item.price)}
                   </TableCell>
 
                   <TableCell sx={{ textAlign: "center" }}>

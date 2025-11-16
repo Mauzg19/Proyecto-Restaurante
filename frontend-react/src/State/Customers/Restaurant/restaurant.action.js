@@ -18,6 +18,7 @@ import {
   updateRestaurantRequest,
   updateRestaurantSuccess,
 } from "./ActionCreateros";
+import * as actionTypes from "./ActionTypes";
 
 import {
   CREATE_CATEGORY_FAILURE,
@@ -123,20 +124,32 @@ export const createRestaurant = (reqData) => {
 export const updateRestaurant = ({ restaurantId, restaurantData, jwt }) => {
   return async (dispatch) => {
     dispatch(updateRestaurantRequest());
-
+    
     try {
+      // Enviar el payload exactamente como viene del componente
+      console.log('Enviando request:', {
+        url: `api/admin/restaurants/${restaurantId}`,
+        data: restaurantData
+      });
+
       const res = await api.put(
-        `api/admin/restaurant/${restaurantId}`,
+        `api/admin/restaurants/${restaurantId}`,
         restaurantData,
         {
           headers: {
             Authorization: `Bearer ${jwt}`,
+            'Content-Type': 'application/json'
           },
         }
       );
+
+      console.log('Respuesta exitosa:', res.data);
       dispatch(updateRestaurantSuccess(res.data));
+      return res.data; // Retornar los datos para el then()
     } catch (error) {
+      console.error('Error en la actualización:', error.response?.data || error.message);
       dispatch(updateRestaurantFailure(error));
+      throw error; // Propagar el error para manejo en el componente
     }
   };
 };
@@ -145,7 +158,7 @@ export const deleteRestaurant = ({ restaurantId, jwt }) => {
     dispatch(deleteRestaurantRequest());
 
     try {
-      const res = await api.delete(`/api/admin/restaurant/${restaurantId}`, {
+      const res = await api.delete(`/api/admin/restaurants/${restaurantId}`, {
         headers: {
           Authorization: `Bearer ${jwt}`,
         },
@@ -278,6 +291,42 @@ export const createCategoryAction = ({ reqData, jwt }) => {
     } catch (error) {
       console.log("catch - ", error);
       dispatch({ type: CREATE_CATEGORY_FAILURE, payload: error });
+    }
+  };
+};
+
+export const updateCategoryAction = ({ categoryId, data, jwt }) => {
+  return async (dispatch) => {
+    dispatch({ type: actionTypes.UPDATE_CATEGORY_REQUEST });
+    try {
+      const res = await api.put(`api/admin/category/${categoryId}`, data, {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      });
+      console.log('update category ', res.data);
+      dispatch({ type: actionTypes.UPDATE_CATEGORY_SUCCESS, payload: res.data });
+    } catch (error) {
+      console.log('catch - ', error);
+      dispatch({ type: actionTypes.UPDATE_CATEGORY_FAILURE, payload: error });
+    }
+  };
+};
+
+export const deleteCategoryAction = ({ categoryId, jwt }) => {
+  return async (dispatch) => {
+    dispatch({ type: actionTypes.DELETE_CATEGORY_REQUEST });
+    try {
+      const res = await api.delete(`api/admin/category/${categoryId}`, {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      });
+      console.log('delete category ', res.data);
+      dispatch({ type: actionTypes.DELETE_CATEGORY_SUCCESS, payload: categoryId });
+    } catch (error) {
+      console.log('catch - ', error);
+      dispatch({ type: actionTypes.DELETE_CATEGORY_FAILURE, payload: error });
     }
   };
 };

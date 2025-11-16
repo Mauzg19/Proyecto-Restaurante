@@ -52,11 +52,14 @@ public class OrderServiceImplementation implements OrderService {
 	@Autowired
 	private NotificationService notificationService;
 	
+	@Autowired
+	private InvoiceService invoiceService;
+	
 
 	
 
 	@Override
-	public PaymentResponse createOrder(CreateOrderRequest order,User user) throws UserException, RestaurantException, CartException, StripeException {
+	public PaymentResponse createOrder(CreateOrderRequest order, User user) throws UserException, RestaurantException, CartException, StripeException {
 		
 	    Address shippAddress = order.getDeliveryAddress();
 
@@ -107,6 +110,9 @@ public class OrderServiceImplementation implements OrderService {
   
 	    createdOrder.setItems(orderItems);
 	    Order savedOrder = orderRepository.save(createdOrder);
+
+	    // Generar factura electrónica (puedes pedir RFC y razón social en el frontend)
+	    invoiceService.generateInvoice(savedOrder, order.getRfcCliente(), order.getRazonSocial());
 
 	   restaurant.get().getOrders().add(savedOrder);
 	   

@@ -25,6 +25,7 @@ const menu = [
   { title: "Ingredientes", icon: <FastfoodIcon />, path: "/ingredients" },
   { title: "Eventos", icon: <EventIcon />, path: "/event" },
   { title: "Detalles", icon: <AdminPanelSettingsIcon />, path: "/details" },
+  { title: "Predicción de categoría", icon: <CategoryIcon />, path: "/prediction", adminOnly: true },
   { title: "Cerrar sesión", icon: <LogoutIcon />, path: "/" },
   
 ];
@@ -32,7 +33,7 @@ export default function AdminSidebar({ handleClose, open }) {
   const isSmallScreen = useMediaQuery("(max-width:1080px)");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {restaurant}=useSelector(store=>store);
+  const { auth } = useSelector((store) => store);
 
 
   const handleNavigate = (item) => {
@@ -64,16 +65,22 @@ export default function AdminSidebar({ handleClose, open }) {
           <div className="w-[70vw] lg:w-[20vw] group h-[100vh] flex flex-col justify-center text-xl space-y-[1.65rem]">
             
             {menu.map((item, i) => (
-              <>
-                <div
-                  onClick={() => handleNavigate(item)}
-                  className="px-5 flex items-center space-x-5 cursor-pointer"
-                >
-                  {item.icon}
-                  <span>{item.title}</span>
-                </div>
-               {i!==menu.length-1 && <Divider />}
-              </>
+              <React.Fragment key={i}>
+                {(
+                  !item.adminOnly ||
+                  (auth.user && (auth.user.role === "ROLE_ADMIN" || auth.user.role === "ROLE_RESTAURANT_OWNER")) ||
+                  (item.adminOnly && (localStorage.getItem("role")==="ROLE_ADMIN" || localStorage.getItem("role")==="ROLE_RESTAURANT_OWNER"))
+                ) && (
+                  <div
+                    onClick={() => handleNavigate(item)}
+                    className="px-5 flex items-center space-x-5 cursor-pointer"
+                  >
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </div>
+                )}
+                {i !== menu.length - 1 && <Divider />}
+              </React.Fragment>
             ))}
           </div>
 

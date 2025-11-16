@@ -1,16 +1,16 @@
 
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button, makeStyles, Card, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { Create } from '@mui/icons-material';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCategoryAction } from '../../State/Customers/Restaurant/restaurant.action';
-import { createIngredient } from '../../State/Admin/Ingredients/Action';
+import { createIngredient, updateIngredient } from '../../State/Admin/Ingredients/Action';
 
 
 
-const CreateIngredientForm = ({handleClose}) => {
+const CreateIngredientForm = ({handleClose, initialData = null}) => {
     const {id}=useParams();
     const dispatch=useDispatch();
     const {auth,restaurant,ingredients}=useSelector(store=>store)
@@ -22,17 +22,29 @@ const CreateIngredientForm = ({handleClose}) => {
     ingredientCategoryId:''
   });
 
+  // Prefill when editing
+  useEffect(() => {
+    if (initialData) {
+      setFormData({
+        name: initialData.name || '',
+        ingredientCategoryId: initialData.category?.id || ''
+      });
+    }
+  }, [initialData]);
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log('Form submitted:', formData);
 
-    setFormData({
-      name: '',
-      ingredientCategoryId:''
-    })
-    handleClose()
-    const data={...formData,restaurantId:restaurant.usersRestaurant.id}
-    dispatch(createIngredient({jwt:auth.jwt || jwt,data}))
+    const data = { ...formData, restaurantId: restaurant.usersRestaurant.id };
+    if (initialData && initialData.id) {
+      dispatch(updateIngredient({ id: initialData.id, data, jwt: auth.jwt || jwt }));
+    } else {
+      dispatch(createIngredient({jwt:auth.jwt || jwt,data}));
+    }
+
+    setFormData({ name: '', ingredientCategoryId: '' });
+    handleClose();
     
   };
 
